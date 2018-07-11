@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head>
+      <!-- Make the page responsive to the device window size -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+  <!-- Add Font Awesome (for icons) https://fontawesome.com/get-started -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+  <!-- Add the hexagon stylesheet -->
+  <link rel="stylesheet" href="/resources/hexagon/hexagon.css">
+</head>
+<html>
+    
+    <body>
+        <div class="hx-content">
+            <div class="hx-group hx-horizontal">
+                <div class="hx-section"><h1><div id="account_header"></div></h1></div>
+                <div class="hx-section" style="text-align:right"><h3><div id="balance_total"></div></h3></div>
+            </div>
+            <div class="hx-group hx-horizontal">
+                <div class="hx-section"><h2>Readings</h2></div>
+            </div>
+            <div id="reading_table"></div>            
+            <div id="reading_collapsible">
+                <div class="hx-collapsible-heading">Add New</div>
+                <div class="hx-collapsible-content">
+                    <div id="reading_form"></div>
+                </div>
+            </div>
+            <div class="hx-group hx-horizontal">
+                <div class="hx-section"><h2>Transfers</h2></div>
+                <div class="hx-section" style="text-align:right"><h3><div id="transfer_total"></div></h3></div>
+            </div>
+            <h3><div id="transfer_total"></div></h3>
+            <div id="transfer_table"></div>
+            <div id="transfer_collapsible">
+                <div class="hx-collapsible-heading">Add New</div>
+                <div class="hx-collapsible-content">
+                    <div id="transfer_form"></div>
+                </div>
+            </div>
+            <div class="hx-group hx-horizontal">
+                <div class="hx-section"><h2>Commitments</h2></div>
+                <div class="hx-section" style="text-align:right"><h3><div id="commitment_total"></div></h3></div>
+            </div>
+            <div id="commitment_table"></div>
+            <div id="commitment_collapsible">
+                <div class="hx-collapsible-heading">Add New</div>
+                <div class="hx-collapsible-content">
+                    <div id="commitment_form"></div>
+                </div>
+            </div>
+        </div>
+        <script src="/resources/hexagon/hexagon.js"></script>
+        <script src="account.controller.js"></script>
+    </body>
+</html>

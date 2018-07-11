@@ -1,0 +1,11 @@
+{
+    "id": 1,
+    "name": "Savings",
+    "balance": {
+        "lastReading": 1000,
+        "transfersIn": 200,
+        "transfersOut": 300,
+        "commitmentsIn": 400,
+        "commitmentsOut": 500
+    }
+}
