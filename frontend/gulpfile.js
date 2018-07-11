@@ -65,4 +65,4 @@ gulp.task("compile", ["clean"], function () {
     });
 });
 
-gulp.task("install", gulpSequence('clean', ['build-hexagon', 'copy-html', 'compile']));
+gulp.task("static", gulpSequence('clean', ['build-hexagon', 'copy-html', 'compile']));

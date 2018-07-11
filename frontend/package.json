@@ -6,7 +6,7 @@
         "mock-frontend-server": "http-server dist -p 3030",
         "test": "mocha -r ts-node/register src/**/*.spec.ts",
         "build-hexagon": "gulp build-hexagon",
-        "install": "gulp install"
+        "static": "gulp static"
     },
     "author": "tgelder@gmail.com",
     "devDependencies": {

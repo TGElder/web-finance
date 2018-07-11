@@ -9,9 +9,9 @@ declare const hx: any;
 
 let view: AccountView = new AccountView();
 view.init(
-    new DAO("http://localhost:8080/accounts", Account.base()),
-    new DAO("http://localhost:8080/readings", Reading.base()),
-    new DAO("http://localhost:8080/transfers", Transfer.base()),
-    new DAO("http://localhost:8080/commitments", Commitment.base()),
-    new DAO("http://localhost:8080/commitments/close", CommitmentClosure.base())
+    new DAO("/accounts", Account.base()),
+    new DAO("/readings", Reading.base()),
+    new DAO("/transfers", Transfer.base()),
+    new DAO("/commitments", Commitment.base()),
+    new DAO("/commitments/close", CommitmentClosure.base())
 );
