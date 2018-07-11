@@ -63,7 +63,7 @@ export class DAO<T extends Entity<T>> {
         }
         catch(err) {
             console.log(err);
-            throw new Error("Failed to post to backend",);
+            throw new Error("Failed to post to backend");
         }
     }
 
