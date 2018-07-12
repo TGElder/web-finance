@@ -5,4 +5,4 @@ COPY pom.xml .
 
 RUN mvn package
 
-CMD java -jar target/*
+CMD java -jar target/*.jar

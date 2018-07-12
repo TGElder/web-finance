@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
 @SpringBootApplication
 @Slf4j
@@ -18,6 +19,7 @@ public class App {
   }
 
   @Bean
+  @Profile("!test")
   public CommandLineRunner populateUsers(Config config, AuthorizedUserRepository authorizedUserRepository) {
     return args -> {
       authorizedUserRepository.deleteAll();
