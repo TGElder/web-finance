@@ -9,9 +9,9 @@ export class DAO<T extends Entity<T>> {
     private client: rm.RestClient;
     private base: T;
 
-    constructor(service: string, base: T) {
+    constructor(client: rm.RestClient, service: string, base: T) {
         this.service = window.location.origin + service;
-        this.client = new rm.RestClient('frontend', "");
+        this.client = client;
         this.base = base;
     }
 

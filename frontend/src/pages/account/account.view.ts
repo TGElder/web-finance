@@ -10,6 +10,7 @@ import { Commitment } from "./../../model/Commitment";
 import { CommitmentClosure } from "./../../model/CommitmentClosure";
 import { CommitmentForm } from "../../components/CommitmentForm";
 import { CommitmentTable } from "../../components/CommitmentTable";
+import { Logout } from "../../components/Logout";
 declare const hx: any;
 
 export class AccountView{
@@ -69,6 +70,8 @@ export class AccountView{
             this.readingTable.init();
             this.transferTable.init();
             this.commitmentTable.init();
+
+            new Logout();
 
             new hx.Collapsible('#reading_collapsible')
             new hx.Collapsible('#transfer_collapsible')

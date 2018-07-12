@@ -15,7 +15,7 @@ export class AccountsView{
         this.accountTable.init();
         accountForm.init();
         new Logout();
-        new hx.Collapsible('#account_collapsible')
+        new hx.Collapsible('#account_collapsible');
     }
 
     public async refresh(): Promise<void> {

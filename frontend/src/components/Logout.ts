@@ -10,7 +10,7 @@ export class Logout {
     constructor() {
         this.client = new http.HttpClient('frontend');
         hx.select("#logout_button").add(hx
-            .button({context: 'positive'})
+            .button({context: 'contrast'})
             .text('Logout'))
             .on('click', () => this.post());
     }
@@ -19,6 +19,7 @@ export class Logout {
         let headers: IHeaders = {"X-XSRF-TOKEN": Cookies.get("XSRF-TOKEN")};
         try {
             await this.client.post(window.location.origin + "/logout", "", headers);
+            location.reload();
             return;
         }
         catch(err) {

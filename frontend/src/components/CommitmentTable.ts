@@ -28,7 +28,7 @@ export class CommitmentTable extends Table<Commitment> {
                         hx.select(element).text(cell.toLocaleString());
                     } else {
                         hx.select(element).add(hx
-                            .button({context: 'positive'})
+                            .button({context: 'negative'})
                             .text('Close'))
                             .on('click', () => this.closeCommitment(row.commitment));
                     }
