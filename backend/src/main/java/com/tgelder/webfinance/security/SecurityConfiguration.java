@@ -2,6 +2,7 @@ package com.tgelder.webfinance.security;
 
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -11,6 +12,7 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @EnableOAuth2Sso
 @EnableGlobalMethodSecurity(securedEnabled = true)
+@Profile("prod")
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Override

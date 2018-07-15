@@ -2,6 +2,7 @@ import { expect } from 'chai';
 import 'mocha';
 import { Transfer } from './../model/Transfer'
 import { TransferTable } from './TransferTable'
+import { formatDate } from '../utils/DateFormatter';
 
 it('should be able to create a row from a transfer', (done) => {
     let transfer: Transfer = Transfer.base().fromObject({
@@ -24,7 +25,7 @@ it('should be able to create a row from a transfer', (done) => {
             "to": "Savings",
             "what": "Rainy Day",
             "amount": 45.67,
-            "timestamp": new Date(1000000).toLocaleString()
+            "timestamp": formatDate(new Date(1000000))
         }
     });
     

@@ -2,7 +2,6 @@ import { expect } from 'chai';
 import 'mocha';
 import { Commitment } from './Commitment';
 import { CommitmentClosure } from './CommitmentClosure';
-import { Account } from './Account';
 
 const testCommitment: Commitment = Commitment.base().fromObject({
     "id": 123,

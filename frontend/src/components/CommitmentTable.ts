@@ -2,6 +2,7 @@ import {Table} from "./Table"
 import {DAO} from "../dao/DAO";
 import {Commitment} from "./../model/Commitment";
 import {CommitmentClosure} from "./../model/CommitmentClosure";
+import { formatDate } from '../utils/DateFormatter';
 declare const hx: any;
 
 export class CommitmentTable extends Table<Commitment> {
@@ -25,7 +26,7 @@ export class CommitmentTable extends Table<Commitment> {
              closed: {
                 cellRenderer: (element, cell, row) => {
                     if (cell) {
-                        hx.select(element).text(cell.toLocaleString());
+                        hx.select(element).text(formatDate(cell));
                     } else {
                         hx.select(element).add(hx
                             .button({context: 'negative'})
@@ -34,7 +35,8 @@ export class CommitmentTable extends Table<Commitment> {
                     }
                 }
             }
-        }
+        },
+        sort: {column: "timestamp", direction: "desc"}
         };
     }
 
@@ -68,7 +70,7 @@ export class CommitmentTable extends Table<Commitment> {
             to: commitment.getTo().getName(),
             what: commitment.getWhat(),
             amount: commitment.getAmount() / 100,
-            timestamp: commitment.getTimestamp().toLocaleString(),
+            timestamp: formatDate(commitment.getTimestamp()),
             closed: commitment.getClosed()
         }};
     }

@@ -19,7 +19,7 @@ public class App {
   }
 
   @Bean
-  @Profile("!test")
+  @Profile("prod")
   public CommandLineRunner populateUsers(Config config, AuthorizedUserRepository authorizedUserRepository) {
     return args -> {
       authorizedUserRepository.deleteAll();

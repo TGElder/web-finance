@@ -5,4 +5,4 @@ COPY pom.xml .
 
 RUN mvn package
 
-CMD java -jar target/*.jar
+CMD java -jar -Dspring.profiles.active=prod target/*.jar

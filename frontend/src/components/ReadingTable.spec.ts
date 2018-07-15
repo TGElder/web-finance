@@ -2,6 +2,7 @@ import { expect } from 'chai';
 import 'mocha';
 import { Reading } from './../model/Reading'
 import { ReadingTable } from './ReadingTable'
+import { formatDate } from '../utils/DateFormatter';
 
 it('should be able to create a row from a reading', (done) => {
     let reading: Reading = Reading.base().fromObject({
@@ -19,7 +20,7 @@ it('should be able to create a row from a reading', (done) => {
         "id": 123,
         "cells": {
             "amount": 45.67,
-            "when": new Date(1000000).toLocaleString()
+            "when": formatDate(new Date(1000000))
         }
     });
     

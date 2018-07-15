@@ -13,10 +13,11 @@ export class AccountTable extends Table<Account> {
         return {columns: {
             account: {
                 cellRenderer: (element, cell, row) => {
-                    hx.select(element).add(hx.detached('a').attr('href', 'account.html?account=' + row.id).text(cell))
+                    hx.select(element).add(hx.detached('a').attr('href', 'account.html?account=' + row.id + '&closed=false').text(cell))
                 }
             }
-        }
+        },
+        sort: {column: "account", direction: "asc"}
         };
     }
 

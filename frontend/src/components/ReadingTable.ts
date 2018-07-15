@@ -1,6 +1,7 @@
 import {Table} from "./Table"
 import {DAO} from "../dao/DAO";
 import {Reading} from "./../model/Reading";
+import { formatDate } from '../utils/DateFormatter';
 declare const hx: any;
 
 export class ReadingTable extends Table<Reading> {
@@ -12,7 +13,8 @@ export class ReadingTable extends Table<Reading> {
     getOptions(): object {
         return {
             pageSize: 1,
-            filterEnabled: false
+            filterEnabled: false,
+            sort: {column: "when", direction: "desc"}
         };
     }
 
@@ -27,7 +29,7 @@ export class ReadingTable extends Table<Reading> {
         return {
             id: reading.getId(), cells: {
             amount: reading.getAmount() / 100,
-            when: reading.getWhen().toLocaleString()
+            when: formatDate(reading.getWhen())
         }};
     }
 

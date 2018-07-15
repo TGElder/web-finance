@@ -56,7 +56,8 @@ public class BalanceService {
   private Map<Account, Long> getLatestReadings() {
     Map<Account, Optional<Reading>> latestReadings = StreamSupport.stream(readingRepository.findAll().spliterator(), false)
                                                                   .collect(Collectors.groupingBy(Reading::getAccount,
-                                                                                                 Collectors.maxBy(Comparator.comparing(Reading::getAmount))));
+                                                                                                 Collectors.maxBy(Comparator.comparing(Reading::getEpochSecond)
+                                                                                                                            .thenComparing(Reading::getId))));
     return latestReadings.entrySet().stream()
                          .collect(Collectors.toMap(Map.Entry::getKey,
                                                    entry -> entry.getValue().map(Reading::getAmount).orElse(0L)));

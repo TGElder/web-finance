@@ -4,6 +4,7 @@ import com.tgelder.webfinance.persistence.AuthorizedUserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.AuthoritiesExtractor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,7 @@ import java.util.Map;
 
 @Component
 @Slf4j
+@Profile("prod")
 public class GoogleAuthorityExtractor implements AuthoritiesExtractor {
 
   @Autowired
