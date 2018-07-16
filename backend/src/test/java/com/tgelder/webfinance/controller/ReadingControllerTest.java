@@ -6,6 +6,7 @@ import com.google.common.collect.ImmutableMap;
 import com.tgelder.webfinance.App;
 import com.tgelder.webfinance.model.Account;
 import com.tgelder.webfinance.model.Reading;
+import com.tgelder.webfinance.model.Transfer;
 import com.tgelder.webfinance.persistence.AccountRepository;
 import com.tgelder.webfinance.persistence.ReadingRepository;
 import org.junit.After;
@@ -160,6 +161,26 @@ public class ReadingControllerTest {
            .andReturn();
 
   }
+
+  @Test
+  public void shouldGetReadingsForAccount() throws Exception {
+    mockMvc.perform(get("/readings?account=" + testAccounts.get(0).getId().toString()))
+           .andExpect(status().isOk())
+           .andExpect(content().contentType(contentType))
+           .andExpect(jsonPath("$.[*].account.name", containsInAnyOrder("savings")));
+
+    mockMvc.perform(get("/readings?account=" + testAccounts.get(1).getId().toString()))
+           .andExpect(status().isOk())
+           .andExpect(content().contentType(contentType))
+           .andExpect(jsonPath("$.[*].account.name", containsInAnyOrder("personal")));
+  }
+
+  @Test
+  public void shouldNotGetReadingsForNonexistentAccount() throws Exception {
+    mockMvc.perform(get("/readings?account=7000"))
+           .andExpect(status().isNotFound());
+  }
+
 
 
 }

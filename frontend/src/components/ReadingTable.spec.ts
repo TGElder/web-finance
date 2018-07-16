@@ -19,6 +19,7 @@ it('should be able to create a row from a reading', (done) => {
     expect(row).to.deep.equals({
         "id": 123,
         "cells": {
+            "account": "Personal",
             "amount": 45.67,
             "when": formatDate(new Date(1000000))
         }

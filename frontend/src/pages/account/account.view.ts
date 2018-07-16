@@ -38,6 +38,7 @@ export class AccountView{
         
         let transferParams: object = {};
         let commitmentParams: object = {};
+        let readingParams: object = {};
 
         if (urlSearchParams.has("closed")) {
             commitmentParams["closed"] = urlSearchParams.get("closed");
@@ -48,23 +49,35 @@ export class AccountView{
             this.accountId = parseInt(urlSearchParams.get("account"));
             transferParams["account"] = this.accountId;
             commitmentParams["account"] = this.accountId;
+            readingParams["account"] = this.accountId;
 
-            let accounts: Account[] = await accountsDAO.getAll({});
             let account: Account = await accountsDAO.get(this.accountId);
 
             document.title = account.getName();
 
-            this.readingTable = new ReadingTable(readingDAO, {});
             this.readingForm = new ReadingForm(account, readingDAO, this.refresh.bind(this));
+            this.readingForm.init();
+
+            hx.select("#account_header").text(account.getName());
+            this.displayBalance(account);
+
+            new hx.Collapsible("#reading_collapsible")
+
+        } else {
+            document.title = "*";
+
+            hx.select("#account_header").text("*");
+            hx.select("#reading_collapsible").style('display', 'none');
+        }
+
+            let accounts: Account[] = await accountsDAO.getAll({});
+
+            this.readingTable = new ReadingTable(readingDAO, readingParams);
             this.transferTable = new TransferTable(transferDAO, transferParams);
             this.transferForm = new TransferForm(accounts, transferDAO, this.refresh.bind(this));
             this.commitmentTable = new CommitmentTable(commitmentDAO, commitmentClosureDAO, commitmentParams, this.refresh.bind(this));
             this.commitmentForm = new CommitmentForm(accounts, commitmentDAO, this.refresh.bind(this));
 
-            hx.select("#account_header").text(account.getName());
-            this.displayBalance(account);
-
-            this.readingForm.init();
             this.transferForm.init();
             this.commitmentForm.init();
             this.readingTable.init();
@@ -73,11 +86,8 @@ export class AccountView{
 
             new Logout();
 
-            new hx.Collapsible('#reading_collapsible')
-            new hx.Collapsible('#transfer_collapsible')
-            new hx.Collapsible('#commitment_collapsible')
-        }
-
+            new hx.Collapsible("#transfer_collapsible")
+            new hx.Collapsible("#commitment_collapsible")
        
     }
 

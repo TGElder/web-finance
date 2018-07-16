@@ -20,6 +20,7 @@ export class ReadingTable extends Table<Reading> {
 
     getHeaders(): object[] {
         return [
+            {name: 'Account', id: 'account'},
             {name: 'Amount', id: 'amount'},
             {name: 'When', id: 'when'}
         ];
@@ -28,8 +29,9 @@ export class ReadingTable extends Table<Reading> {
     createRowFromObject(reading: Reading): object {
         return {
             id: reading.getId(), cells: {
-            amount: reading.getAmount() / 100,
-            when: formatDate(reading.getWhen())
+                account: reading.getAccount().getName(),
+                amount: reading.getAmount() / 100,
+                when: formatDate(reading.getWhen())
         }};
     }
 
