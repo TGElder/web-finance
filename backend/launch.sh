@@ -1,0 +1,1 @@
+docker run -p 3030:8080 -v ~/Documents/webfinance:/database -d web-finance
